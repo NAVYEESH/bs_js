@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center ;
+    }
+    button {
+      background-color: #228ac2;
+      border: none;
+      color: rgb(13, 12, 12);
+      padding: 15px 15px;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 20px;
+      width: 200px;
+      margin-top: 10px;
+      height: 30px;
+      line-height: 0px;
+    }
+    h4{
+        color:crimson;
+    }
+  </style>
+  <script>
+    function findReverse() {
+      let number = Number(document.getElementById("input_number").value);
+      let reverse = parseFloat(number.toString().split('').reverse().join('')) * Math.sign(number);
+      document.getElementById('result').innerText = `Reversed Number: ${reverse}`;
+    }
+    document.getElementById("result").innerHTML = reverse;
+  </script>
+  <title>Javascript_task-1</title>
+</head>
+<html lang="en">
+<body>
+  <h3>Enter Number to Reverse Number</h3>
+  <input id="input_number" placeholder="Enter number" style="text-align: center ;" />
+  <button onclick="findReverse()">Find Reverse</button>
+  <h4 id="result">.........</h4>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript_task-5</title>
+    <style>
+        div{
+            align-items: center;
+            max-width: 300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 3rem;
+            font-size: 14px;
+        }
+        form{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<html>
+<body>
+<div >
+<h2>Contact Form</h2>
+
+<form id="contactForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name"><span id="nameError" style="color:red"></span><br>
+  <br><label for="email">Email:</label>
+  <input type="text" id="email" name="email"><span id="emailError" style="color:red"></span><br>
+  <br><label for="website">Website:</label>
+  <input type="text" id="website" name="website"><span id="websiteError" style="color:red"></span><br>
+  <br><label for="message">Message:</label>
+  <textarea id="message" name="message"></textarea><span id="messageError" style="color:red"></span><br>
+  <br><input class="submit" type="submit" value="Submit">
+</form>
+</div>
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event){
+  event.preventDefault();
+  
+  var name = document.getElementById("name");
+  var email = document.getElementById("email");
+  var website = document.getElementById("website");
+  var message = document.getElementById("message");
+  
+  var allFieldsFilled = true;
+  
+  if(name.value == ""){
+    document.getElementById("nameError").textContent = " This field is required.";
+    name.style.borderColor = "red";
+    allFieldsFilled = false;
+  } else {
+    document.getElementById("nameError").textContent = "";
+    name.style.borderColor = "";
+  }
+  
+  var emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+  if(email.value == "" || !emailRegex.test(email.value)){
+    document.getElementById("emailError").textContent = " A valid email is required.";
+    email.style.borderColor = "red";
+    allFieldsFilled = false;
+  } else {
+    document.getElementById("emailError").textContent = "";
+    email.style.borderColor = "";
+  }
+  
+  var websiteRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+  if(website.value == "" || !websiteRegex.test(website.value)){
+    document.getElementById("websiteError").textContent = " A valid url is required.";
+    website.style.borderColor = "red";
+    allFieldsFilled = false;
+  } else {
+    document.getElementById("websiteError").textContent = "";
+    website.style.borderColor = "";
+  }
+  
+  if(message.value == ""){
+    document.getElementById("messageError").textContent = " This field is required.";
+    message.style.borderColor = "red";
+    allFieldsFilled = false;
+  } else {
+    document.getElementById("messageError").textContent = "";
+    message.style.borderColor = "";
+  }
+  
+  if(allFieldsFilled){
+    alert("Form submitted successfully.");
+  }
+});
+</script>
+
+</body>
+</html>

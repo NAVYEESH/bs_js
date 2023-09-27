@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript_task-3</title>
+    <style type="text/css">
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px;
+            padding: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        form{
+            border: 1px solid black;
+            width: 350px;
+            padding-left: 20px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        span{
+            color: deeppink;
+        }
+        button:hover {
+            border: 3px solid rgb(67, 91, 232);
+            border-radius: 5px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+    <script>
+        function multiply()
+        {
+            num1=document.getElementById("firstnumber").value;
+            num2=document.getElementById("secondnumber").value;
+            document.getElementById("result").innerHTML=num1*num2;
+        }
+        function divide()
+        {
+            num1=document.getElementById("firstnumber").value;
+            num2=document.getElementById("secondnumber").value;
+            document.getElementById("result").innerHTML=num1/num2;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        1st number :<input type="text" id="firstnumber" />
+        <br>
+        2nd number : <input type="text" id="secondnumber" />
+        <br>
+        <button type="button" onclick="multiply()" >Multiply</button>
+        <button type="button" onclick="divide()" >Divide</button>
+        <p>The Result is:
+            <span id="result"></span>
+        </p>
+    </form>
+</body>
+</html>

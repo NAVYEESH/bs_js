@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Javascript_task-8</title>
+<style>
+  
+form{
+    background-image: url("j_task_08-01.png");
+    padding: 5px 20px;
+    width: 780px;
+    margin-left: 20%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+input[type="text"], input[type="password"], input[type="email"], select, textarea {
+  width: 500px;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+input[type="submit"] {
+  background-color: red;
+  color: white;
+  padding: 5px 20px;
+  margin: 10px 0;
+  border-radius: 50px;
+  cursor: pointer;
+}
+h1{
+    color: blue;
+}
+.td1{
+    text-align: end;
+}
+.error {
+  color: red;
+  margin-left: 15px;
+}
+.error-border {
+  border-color: red;
+}
+</style>
+</head>
+<body>
+<form class="bg" id="regForm">
+  <center><h1>Registration Form</h1></center>
+  <table>
+    <tr>
+      <td class="td1"><label for="fname">First Name:</label></td>
+      <td><input type="text" id="fname" oninput="validateInput(this)" name="fname"></td>
+      <td><span class="error" id="fnameError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="lname">Last Name:</label></td>
+      <td><input type="text" id="lname" oninput="validateInput(this)" name="lname"></td>
+      <td><span class="error" id="lnameError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="email">Email:</label></td>
+      <td><input type="email" id="email" oninput="validateInput(this)" name="email"></td>
+        <td><span class="error" id="emailError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="pwd">Password:</label></td>
+      <td><input type="password" id="pwd" oninput="validateInput(this)" name="pwd"></td>
+      <td><span class="error" id="pwdError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="cpwd">Confirm Password:</label></td>
+      <td><input type="password" id="cpwd" oninput="validateInput(this)" name="cpwd"></td>
+      <td><span class="error" id="cpwdError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="gender">Gender:</label></td>
+      <td>
+        <input type="radio" id="male" name="gender" value="male"> Male<br>
+        <input type="radio" id="female" name="gender" value="female"> Female<br></td>
+        <td><span class="error" id="genderError"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="age">Age:</label></td>
+      <td><input type="text" id="age" oninput="validateInput(this)" name="age"></td>
+      <td><span class="error" id="ageError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="phone">Phone Number:</label></td>
+      <td><input type="text" id="phone" oninput="validateInput(this)" name="phone"></td>
+      <td><span class="error" id="phoneError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="address">Address:</label></td>
+      <td><textarea id="address" oninput="validateInput(this)" name="address"></textarea></td>
+      <td><span class="error" id="addressError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="state">State:</label></td>
+      <td><input type="text" id="state" oninput="validateInput(this)" name="state"></td>
+      <td><span class="error" id="stateError"></span></td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="country">Country:</label></td>
+      <td>
+        <select id="country" name="country">
+          <option value="">Choose your country</option>
+          <option value="india">India</option>
+          <option value="usa">USA</option>
+          <option value="uk">UK</option>
+          <option value="canada">Canada</option>
+          <option value="australia">Australia</option>
+        </select></td>
+        <td><span class="error" id="countryError"></span>
+      </td>
+    </tr>
+    <tr>
+      <td class="td1"><label for="languages">Languages Known:</label></td>
+      <td>
+        <input type="checkbox" id="english" name="english"> English
+        <input type="checkbox" id="kannada" name="kannada"> Kannada
+        <input type="checkbox" id="hindi" name="hindi"> Hindi
+        <input type="checkbox" id="telugu" name="telugu"> Telugu<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3"><input type="checkbox" id="declaration" name="declaration" checked> I hereby declare that the details given are true.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><p style="text-align: end;">Login to <a href="www.ethnus.com">Ethnus</a> page</p></td>
+        <td></td>
+    </tr>
+  </table>
+  <center><input type="submit" value="Register"></center>
+</form>
+<script>
+    function validateInput(input) {
+        var errorSpan = document.getElementById(input.id + "Error");
+        if(input.value.length < 5){
+          errorSpan.textContent = "Poor";
+          input.classList.add("error-border");
+        } else {
+          errorSpan.textContent = "";
+          input.classList.remove("error-border");
+        }
+      }
+      document.getElementById("regForm").addEventListener("submit", function(event){
+        event.preventDefault();
+        
+        var fname = document.getElementById("fname");
+        var lname = document.getElementById("lname");
+        var email = document.getElementById("email");
+        var pwd = document.getElementById("pwd");
+        var cpwd = document.getElementById("cpwd");
+        var gender = document.querySelector('input[name="gender"]:checked');
+        var age = document.getElementById("age");
+        var phone = document.getElementById("phone");
+        var address = document.getElementById("address");
+        var state = document.getElementById("state");
+        var country = document.getElementById("country");
+        var english = document.getElementById("english");
+        var kannada = document.getElementById("kannada");
+        var hindi = document.getElementById("hindi");
+        var telugu = document.getElementById("telugu");
+        var declaration = document.getElementById("declaration");
+        
+        var allFieldsFilled = true;
+        
+        if(fname.value.length <5){
+          document.getElementById("fnameError").textContent = "Poor";
+          fname.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("fnameError").textContent = "";
+          fname.classList.remove("error-border");
+        }
+        
+        if(lname.value.length <5){
+          document.getElementById("lnameError").textContent = "Poor";
+          lname.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("lnameError").textContent = "";
+          lname.classList.remove("error-border");
+        }
+        
+        var emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+        if(email.value == "" || !emailRegex.test(email.value)){
+          document.getElementById("emailError").textContent = "Poor";
+          email.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("emailError").textContent = "";
+          email.classList.remove("error-border");
+        }
+        
+        if(pwd.value.length <5){
+          document.getElementById("pwdError").textContent = "Poor";
+          pwd.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("pwdError").textContent = "";
+          pwd.classList.remove("error-border");
+        }
+        
+        if(cpwd.value == "" || cpwd.value != pwd.value){
+          document.getElementById("cpwdError").textContent = "Poor or Mismatch";
+          cpwd.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("cpwdError").textContent = "";
+          cpwd.classList.remove("error-border");
+        }
+        
+        if(gender == null){
+          document.getElementById("genderError").textContent = "Poor";
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("genderError").textContent = "";
+        }
+        
+        if(age.value.length <0){
+          document.getElementById("ageError").textContent = "Poor";
+          age.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("ageError").textContent = "";
+          age.classList.remove("error-border");
+        }
+        
+        if(phone.value.length!=10){
+          document.getElementById("phoneError").textContent = "Poor";
+          phone.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("phoneError").textContent = "";
+          phone.classList.remove("error-border");
+        }
+        
+        if(address.value.length <5){
+          document.getElementById("addressError").textContent = "Poor";
+          address.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("addressError").textContent = "";
+          address.classList.remove("error-border");
+        }
+        
+        if(state.value.length <5){
+          document.getElementById("stateError").textContent = "Poor";
+          state.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("stateError").textContent = "";
+          state.classList.remove("error-border");
+        }
+        
+        if(country.value==""){
+          document.getElementById("countryError").textContent = "Poor";
+          country.classList.add("error-border");
+          allFieldsFilled = false;
+        } else {
+          document.getElementById("countryError").textContent = "";
+          country.classList.remove("error-border");
+        }
+      });
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript_task-2</title>
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        button {
+            background-color: #228ac2;
+            border: none;
+            color: rgb(13, 12, 12);
+            padding: 15px 15px;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 20px;
+            width: 200px;
+            margin-top: 10px;
+            height: 30px;
+            line-height: 0px;
+          }
+        h4{
+            color:crimson;
+        }
+      </style>
+      <script>
+        function sortString() 
+        {
+        /*const inputElement = document.getElementById('input');
+        const sortResult = inputElement.value.split('').sort().join('');
+        inputElement.value = sortResult;*/
+        const inputString = document.getElementById('input').value;
+        const sortedString = inputString.split('').sort().join('');
+        document.getElementById('result').innerText = `Alphabetical Order: ${sortedString}`;
+        }
+        document.getElementById("sortResult").innerHTML = sort;
+      </script>
+</head>
+<body>
+    <h3>Sort The String</h3>
+    <input id="input" type="text" placeholder="Enter a String" value="" style="text-align: center;"/>
+    <button onclick="sortString()">Sort</button>
+    <h4 id="result">.........</h4>
+</body>
+</html>
